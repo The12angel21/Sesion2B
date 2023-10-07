@@ -19,7 +19,7 @@ class EmpleadoTest {
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
-		System.out.println("After allaaa");
+		System.out.println("After all");
 	}
 
 	@BeforeEach
@@ -34,47 +34,76 @@ class EmpleadoTest {
 
 	@Test
 	void testCalculoNominaBrutaVendedor() {
-		fail("Not yet implemented");
+		int expected =2000;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 0, 0);
+		assertEquals(expected, actual);
+		
 	}
 	
 	@Test
 	void testCalculoNominaBrutaEncargado() {
-		fail("Not yet implemented");
+		int expected = 2500;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Encargado, 0, 0);
+		assertEquals(expected, actual);
+		
 	}
 
 	@Test
 	void testCalculoNominaBrutaEncargadoVentasNegativas() {
-		fail("Not yet implemented");
+		int expected =2500;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Encargado, -10, 0);
+		assertEquals(expected, actual);
+		;
 	}
 	
 	@Test
 	void testCalculoNominaBrutaVentasEntre0y1000() {
-		fail("Not yet implemented");
+		int expected =2000;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 500, 0);
+		assertEquals(expected, actual);
+		
 	}
 	
 	@Test
 	void testCalculoNominaBrutaVentasEntre1000y1500() {
-		fail("Not yet implemented");
+		int expected =2100;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 1200, 0);
+		assertEquals(expected, actual);
+		
 	}
 	
 	@Test
 	void testCalculoNominaBrutaVentasMayor1500() {
-		fail("Not yet implemented");
+		int expected =2200;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 1600, 0);
+		assertEquals(expected, actual);
 	}
 	
 	@Test
 	void testCalculoNominaBrutaHorasExtraNegativas() {
-		fail("Not yet implemented");
+		int expected =2000;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 0, -20);
+		assertEquals(expected, actual);
 	}
 	
 	@Test
 	void testCalculoNominaBrutaHorasExtraPositivas() {
-		fail("Not yet implemented");
+		int expected =2060;
+		int actual = Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 0, 2);
+		assertEquals(expected, actual);
 	}
 
 	@Test
-	void testCalculoNominaNeta() {
-		fail("Not yet implemented");
+	void testCalculoNominaNetaEntre2100y2500() {
+		int expected =1700;
+		int actual = Empleado.calculoNominaNeta(TipoEmpleado.Vendedor, 0, 0);
+		assertEquals(expected, actual);
+	}
+	
+	void testCalculoNominaNetaMas2500() {
+		int expected =1760;
+		int actual = Empleado.calculoNominaNeta(Empleado.calculoNominaBruta(TipoEmpleado.Vendedor, 0, 0));
+		assertEquals(expected, actual);
 	}
 
 }
